@@ -1,0 +1,23 @@
+{
+  "name": "autoprice",
+  "version": "1.0.0",
+  "description": "A form to colculate price of an auto",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoveBosikova/calcAutoPrice.git"
+  },
+  "keywords": [
+    "autotest"
+  ],
+  "author": "Liubov Bosikova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LoveBosikova/calcAutoPrice/issues"
+  },
+  "homepage": "https://github.com/LoveBosikova/calcAutoPrice#readme",
+  "type": "module"
+}

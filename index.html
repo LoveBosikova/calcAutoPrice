@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCalc</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="form__container">
+
+        <h1>Рассчитать стоимость автомобиля онлайн</h1>
+
+        <form class="form">
+
+            <p class="form__item item-flex">
+                <label for="carBrand" class="form__question">Марка автомобиля:</label>
+                <abbr title="required"></abbr>
+                <select name="carBrand" id="carBrand">
+                    <option value="Reno">Reno (по умолчанию) </option>
+                    <option value="Opel">Opel</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Jaguar">Jaguar</option>
+                </select>
+            </p>
+
+            <p class="form__item item-flex">
+                <label for="carModel" class="form__question">Модель:</label>
+                <abbr title="required"></abbr>
+                <select name="carModel" id="carModel">
+                    <option value="E-Pace">E-Pace (по умолчанию) </option>
+                    <option value="I-Pace">I-Pace</option>
+                    <option value="J-Pace">J-Pace</option>
+                </select>
+            </p>
+
+            
+
+            <p class="form__item item-flex">
+                <label for="auctionSelect" class="form__question">Аукцион:</label>
+                <abbr title="not required"></abbr>
+                <select name="auctionSelect" id="auctionSelect">
+                    <option value="800">800 000 руб. (по умолчанию) </option>
+                    <option value="500">500 000 руб.</option>
+                    <option value="600">600 000 руб.</option>
+                    <option value="700">700 000 руб.</option>
+                    <option value="900">900 000 руб.</option>
+                    <option value="1M">1 000 000 руб.</option>
+                    <option value="1,5M">1 500 000 руб.</option>
+                    <option value="what a">больше 1 500 000 руб. Позвоните нам</option>
+                </select>
+            </p>
+
+            <p class="form__item">
+                <label for="serviceType" class="form__question form__question--mb">Тип топлива</label>
+                <abbr title="required"></abbr>
+                <div class="form__items-wrap">
+                    <div>
+                        <input type="radio" id="allAuto" name="serviceType" value="100" checked>
+                        <label for="allAuto" class="checkbox-before">Бензин</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="sawCut" name="serviceType" value="80">
+                        <label for="sawCut" class="checkbox-before">Дизель</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="frameCut" name="serviceType" value="70">
+                        <label for="frameCut" class="checkbox-before">Газ</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="passengeConstructor" name="serviceType" value="50">
+                        <label for="passengeConstructor" class="checkbox-before">Электричество</label>
+                    </div>
+                </div>
+            </p>
+
+            <p class="form__item item-flex">
+                <label for="engineCapacity" class="form__question">Объём двигателя, литры</label>
+                <input id="engineCapacity" type="number" name="engineCapacity" min="0.5" max="20" placeholder="Сколько литров в двигателе вашего авто?" class="input-border">
+                <abbr title="required"></abbr>
+            </p>
+
+            <p class="form__item item-flex" >
+                <label for="horsepower" class="form__question">Мощность, л.с.</label>
+                <input id="horsepower" type="number" name="horsepower" min="80" max="1000" placeholder="Число лошадиных сил от 80 до 1000" class="input-border">
+                <abbr title="not required"></abbr>
+            </p>
+
+            <p class="form__item">
+                <label for="vehicleCondition" class="form__question form__question--mb">Сотояние автомобиля</label>
+                <abbr title="required"></abbr>
+                <div class="form__items-wrap">
+                    <div>
+                        <input type="radio" id="new" name="vehicleCondition" value="new" checked>
+                        <label for="new" class="checkbox-before">Новый</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="used" name="vehicleCondition" value="used">
+                        <label for="used" class="checkbox-before">Подержаный</label>
+                    </div>
+                </div>
+            </p>
+
+            <!-- Показывать, если в прошлом окне отметили подержанный -->
+            <p class="form__item">
+                <label for="usersNumbers" class="form__question form__question--mb">Сколько было владельцев?</label>
+                <abbr title="required"></abbr>
+                <div class="form__items-wrap">
+                    <div>
+                        <input type="radio" id="new" name="usersNumbers" value="one" checked>
+                        <label for="one" class="checkbox-before">1 владелец</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="used" name="usersNumbers" value="several">
+                        <label for="several" class="checkbox-before">2-3 владельца</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="new" name="usersNumbers" value="4more" checked>
+                        <label for="4more" class="checkbox-before">больше 3-х владельцев</label>
+                    </div>
+                </div>
+            </p>
+
+            <p class="form__item">
+                <label for="carAge" class="form__question form__question--mb">Возраст автомобиля</label>
+                <abbr title="required"></abbr>
+                <div class="form__items-wrap">
+                    <div>
+                        <input type="radio" id="3less" name="carAge" value="0-3" checked>
+                        <label for="3less" class="checkbox-before">Меньше 3 лет</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="threeToFive" name="carAge" value="3-5">
+                        <label for="threeToFive" class="checkbox-before">От 3 до 5 лет</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="fiveToSeven" name="carAge" value="5-7">
+                        <label for="fiveToSeven" class="checkbox-before">От 5 до 7 лет</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="7more" name="carAge" value="7+">
+                        <label for="7more" class="checkbox-before">Больше 7 лет</label>
+                    </div>
+                </div>
+            </p>
+
+            <p class="form__item">
+                <label for="recipient" class="form__question form__question--mb">Получатель</label>
+                <abbr title="required"></abbr>
+
+                <div class="form__items-wrap">
+                    <div>
+                        <input type="radio" id="individual" name="recipient" value="individual" checked>
+                        <label for="individual" class="checkbox-before">Физическое лицо</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="entity" name="recipient" value="entity">
+                        <label for="entity" class="checkbox-before">Юридическое лицо</label>
+                    </div>
+                </div>
+            </p>
+
+            <p class="form__item">
+                <label for="payment" class="form__question form__question--mb">Оплата</label>
+                <abbr title="required"></abbr>
+
+                <div class="form__items-wrap">
+                    <div>
+                        <input type="radio" id="individual" name="payment" value="individual" checked>
+                        <label for="individual" class="checkbox-before">Карта</label>
+                    </div>
+    
+                    <div>
+                        <input type="radio" id="entity" name="payment" value="entity">
+                        <label for="entity" class="checkbox-before">Наличные</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="entity" name="payment" value="entity">
+                        <label for="entity" class="checkbox-before">Счёт на юридическое лицо</label>
+                    </div>
+                </div>
+            </p>
+
+            <button type="submit">Рассчитать!</button>
+
+        </form>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
