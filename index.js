@@ -1,12 +1,7 @@
 const form = document.querySelector('.form');
 
-const getFormItem = (form, formElement) => form.querySelector(formElement);
-
-
-getFormItem(form, 'select[name="carBrand"]');
-
-const carBrand = getFormItem(form, 'select[name="carBrand"]');
-const carModel = getFormItem(form, 'select[name="carModel"]');
+const carBrand = document.forms.form.elements.carBrand; 
+const carModel = document.forms.form.elements.carModel;  
 const vehicleCondition = document.forms.form.elements.vehicleCondition;
 const divsToShowIfCarUsed = document.querySelectorAll('.d-none-new');
 
@@ -28,9 +23,12 @@ carBrand.addEventListener('change', () => {
         }
 });
 
+console.log(vehicleCondition);
+console.log(divsToShowIfCarUsed);
+
 vehicleCondition.addEventListener('change', () => {
     const condition = vehicleCondition.value;
-    
+
     if (condition === 'used') {
         divsToShowIfCarUsed.forEach((div) => {
             div.style.display = 'block';
