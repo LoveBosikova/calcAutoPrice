@@ -105,7 +105,7 @@ function countauctionPrice ({ auctionSelect }) {
         }
 };
 
-function coumtOverMarketAndAuctionPrice (marketPrice, auctionPrice) {
+function countOverMarketAndAuctionPrice (marketPrice, auctionPrice) {
     if (marketPrice === auctionPrice) {
         return marketPrice;
     }
@@ -114,13 +114,111 @@ function coumtOverMarketAndAuctionPrice (marketPrice, auctionPrice) {
     }
 }
 
+function countOilIndex ({ oilType }) {
+    switch(oilType){
+        case 'Oil':
+            return 0.9;
+        case 'dizel':
+            return 0.8;
+        case 'gase':
+            return 0.7;
+        case 'electricity':
+            return 0.9;
+        }
+}
+
+function countpriceWithOilIndex (price, index) {
+    return price*index;
+}
+
+function countEngineCapacityIndex ({ engineCapacity }) {
+    if (engineCapacity <=3) {
+        return 0.96;
+    }
+    else if (engineCapacity > 3.5 && engineCapacity <= 8) {
+        return 0.95;
+    }
+    else if (engineCapacity > 8 && engineCapacity <= 15) {
+        return price*0.92;
+    }
+    else if (engineCapacity > 15) {
+        return 1.3;
+    }
+}
+
+function countWithEngineCapacityIndex (price, index) {
+    return Math.round(price*index);
+}
+
+function countHorsepowerIndex ({ horsepower }) {
+    if (horsepower < 100) {
+        return 0.7;
+    }
+    else if (horsepower >= 100 && horsepower <= 400) {
+        return 1.2;
+    }
+    else if (horsepower > 400 && horsepower <= 800) {
+        return 1.4;
+    }
+    else if (horsepower > 800) {
+        return 1.8;
+    }
+}
+
+function countPriceWithHorsepowerIndex (price, index) {
+    return Math.round(price*index);
+}
+
+function isNew ({vehicleCondition}){
+    vehicleCondition === 'new' ? true : false;
+}
+
+function getUsersCount ({usersNumbers}) {
+    if (usersNumbers === 'one') {
+        return 0.97;
+    }
+    else if (usersNumbers === 'several') {
+        return 0.9;
+    }
+    else if (usersNumbers === '4more') {
+        return 0.8;
+    }
+
+}
+
+//function countPriceMindingUsersCount ();
+
+function countPriceMindingAge (isNew, answersObj, priceWithHorsepowerIndex) {
+    if(isNew(answersObj)) {
+        return priceWithHorsepowerIndex*2;
+    }
+
+
+}
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const answersObj= Object.fromEntries(formData);
+    console.log(answersObj);
 
     const MarkPrice = countMarkPrice(answersObj);
     const auctionPrice = countauctionPrice(answersObj);
-    const overMarketAndAuctionPrice = OverMarketAndAuctionPrice(answersObj);
+    const overMarketAndAuctionPrice = countOverMarketAndAuctionPrice(MarkPrice, auctionPrice);
+
+    const oilIndex = countOilIndex(answersObj);
+    const priceWithOilIndex = countpriceWithOilIndex(overMarketAndAuctionPrice, oilIndex);
+
+    const engineCapacityIndex = countEngineCapacityIndex(answersObj);
+    const priceWithEngineCapacityIndex = countWithEngineCapacityIndex(priceWithOilIndex, engineCapacityIndex);
+
+    const horsepowerIndex = countHorsepowerIndex(answersObj);
+    const priceWithHorsepowerIndex = countPriceWithHorsepowerIndex(priceWithEngineCapacityIndex, horsepowerIndex); 
+
+    //const priceMindingAge =
+
+
+    console.log(MarkPrice, auctionPrice, overMarketAndAuctionPrice, oilIndex, priceWithOilIndex, priceWithEngineCapacityIndex, priceWithHorsepowerIndex);
+
     
 });

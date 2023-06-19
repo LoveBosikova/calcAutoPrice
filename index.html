@@ -53,26 +53,26 @@
             </p>
 
             <p class="form__item">
-                <label for="serviceType" class="form__question form__question--mb">Тип топлива</label>
+                <label for="oilType" class="form__question form__question--mb">Тип топлива</label>
                 <abbr title="required"></abbr>
                 <div class="form__items-wrap">
                     <div>
-                        <input type="radio" id="allAuto" name="serviceType" value="100" checked>
+                        <input type="radio" id="allAuto" name="oilType" value="Oil" checked>
                         <label for="allAuto" class="checkbox-before">Бензин</label>
                     </div>
     
                     <div>
-                        <input type="radio" id="sawCut" name="serviceType" value="80">
+                        <input type="radio" id="sawCut" name="oilType" value="dizel">
                         <label for="sawCut" class="checkbox-before">Дизель</label>
                     </div>
     
                     <div>
-                        <input type="radio" id="frameCut" name="serviceType" value="70">
+                        <input type="radio" id="frameCut" name="oilType" value="gase">
                         <label for="frameCut" class="checkbox-before">Газ</label>
                     </div>
     
                     <div>
-                        <input type="radio" id="passengeConstructor" name="serviceType" value="50">
+                        <input type="radio" id="passengeConstructor" name="oilType" value="electricity">
                         <label for="passengeConstructor" class="checkbox-before">Электричество</label>
                     </div>
                 </div>
@@ -80,13 +80,13 @@
 
             <p class="form__item item-flex">
                 <label for="engineCapacity" class="form__question">Объём двигателя, литры</label>
-                <input id="engineCapacity" type="number" name="engineCapacity" min="0.5" max="20" placeholder="Сколько литров в двигателе вашего авто?" class="input-border">
+                <input id="engineCapacity" type="number" name="engineCapacity" min="0" max="20" step="0.5" placeholder="Сколько литров в двигателе вашего авто?" class="input-border" required>
                 <abbr title="required"></abbr>
             </p>
 
             <p class="form__item item-flex" >
                 <label for="horsepower" class="form__question">Мощность, л.с.</label>
-                <input id="horsepower" type="number" name="horsepower" min="80" max="1000" placeholder="Число лошадиных сил от 80 до 1000" class="input-border">
+                <input id="horsepower" type="number" name="horsepower" min="80" max="1000" placeholder="Число лошадиных сил от 80 до 1000" class="input-border" required>
                 <abbr title="not required"></abbr>
             </p>
 
