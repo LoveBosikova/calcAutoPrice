@@ -7,6 +7,8 @@ getFormItem(form, 'select[name="carBrand"]');
 
 const carBrand = getFormItem(form, 'select[name="carBrand"]');
 const carModel = getFormItem(form, 'select[name="carModel"]');
+const vehicleCondition = document.forms.form.elements.vehicleCondition;
+const divsToShowIfCarUsed = document.querySelectorAll('.d-none-new');
 
 carBrand.addEventListener('change', () => {
     const brand = carBrand.value;
@@ -26,9 +28,19 @@ carBrand.addEventListener('change', () => {
         }
 });
 
+vehicleCondition.addEventListener('change', () => {
+    const condition = vehicleCondition.value;
+    
+    if (condition === 'used') {
+        divsToShowIfCarUsed.forEach((div) => {
+            div.style.display = 'block';
+        })
+    }
+});
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const answersArr= Object.fromEntries(formData);
-
+    
 });

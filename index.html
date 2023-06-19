@@ -15,7 +15,7 @@
 
         <h1>Рассчитать стоимость автомобиля онлайн</h1>
 
-        <form class="form">
+        <form class="form" name="form">
 
             <p class="form__item item-flex">
                 <label for="carBrand" class="form__question">Марка автомобиля:</label>
@@ -93,7 +93,7 @@
                 <abbr title="not required"></abbr>
             </p>
 
-            <p class="form__item">
+            <p class="form__item" id="vehicleCondition">
                 <label for="vehicleCondition" class="form__question form__question--mb">Сотояние автомобиля</label>
                 <abbr title="required"></abbr>
                 <div class="form__items-wrap">
@@ -103,17 +103,17 @@
                     </div>
     
                     <div>
-                        <input type="radio" id="used" name="vehicleCondition" value="used">
+                        <input type="radio" id="used" name="vehicleCondition" value="used" id="usedCar">
                         <label for="used" class="checkbox-before">Подержаный</label>
                     </div>
                 </div>
             </p>
 
             <!-- Показывать, если в прошлом окне отметили подержанный -->
-            <p class="form__item">
+            <p class="form__item d-none-new">
                 <label for="usersNumbers" class="form__question form__question--mb">Сколько было владельцев?</label>
                 <abbr title="required"></abbr>
-                <div class="form__items-wrap">
+                <div class="form__items-wrap d-none-new">
                     <div>
                         <input type="radio" id="new" name="usersNumbers" value="one" checked>
                         <label for="one" class="checkbox-before">1 владелец</label>
@@ -131,10 +131,10 @@
                 </div>
             </p>
 
-            <p class="form__item">
+            <p class="form__item d-none-new">
                 <label for="carAge" class="form__question form__question--mb">Возраст автомобиля</label>
                 <abbr title="required"></abbr>
-                <div class="form__items-wrap">
+                <div class="form__items-wrap d-none-new">
                     <div>
                         <input type="radio" id="3less" name="carAge" value="0-3" checked>
                         <label for="3less" class="checkbox-before">Меньше 3 лет</label>
