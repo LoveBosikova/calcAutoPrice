@@ -35,6 +35,7 @@ h1, .result__text {
 
     background-color: white;
     border-radius: 40px;
+
 }
 
 .result__container {
@@ -118,3 +119,35 @@ button:active {
     display: none;
 }
 
+@media (max-width: 950px) {
+    body {
+        padding: 0;
+    }
+    .form__container {
+        width: 90vw;
+        margin: .5rem;
+    }
+
+    .result__container {
+        left: 15%;
+        width: 70vw;
+        height: 50vh;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 0;
+    }
+
+    .form__container {
+        width: 80vw;
+    }
+    
+    .result__container {
+        top: 2rem;
+        left: 2%;
+        width: 70vw;
+        height: 60vh;
+    }
+}
