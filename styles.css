@@ -3,18 +3,25 @@
 }
 
 body {
-    background: #24C6DC;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #24C6DC;
+    background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);
     background: linear-gradient(to right, #514A9D, #24C6DC);
     padding: 2rem;
 }
 
-h1 {
+h1, .result__text {
     color: black;
     text-align: center;
 }
 
 .form {
+    color: black;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result {
     color: black;
     width: 80%;
     margin-left: auto;
@@ -28,6 +35,31 @@ h1 {
 
     background-color: white;
     border-radius: 40px;
+}
+
+.result__container {
+    position: fixed;
+    top: 30vh;
+    left: 18%;
+    width: 60vw;
+    padding: 40px;
+    height: 30vh;
+    background-color: orange;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    visibility: hidden;
+}
+.result__button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result__price {
+    font-size: 50px;
+    font-weight: 600;
 }
 
 .form__item {
@@ -64,7 +96,7 @@ h1 {
     flex: 50%;
 }
 
-button[type="submit"] {
+button {
     width: 100%;
     border-radius: 4px;
     min-height: 2.3rem;
@@ -77,7 +109,7 @@ button[type="submit"] {
     color: white;
 }
 
-button[type="submit"]:active {
+button:active {
     background-color: #24C6DC;
     border-color: white;
 }

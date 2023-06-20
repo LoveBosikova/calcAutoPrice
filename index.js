@@ -1,10 +1,15 @@
+// Захватывает элементы ДОМ-дерева, с которыми будем работать
 const form = document.querySelector('.form');
 
 const carBrand = document.forms.form.elements.carBrand; 
 const carModel = document.forms.form.elements.carModel;  
 const vehicleCondition = document.forms.form.elements.vehicleCondition;
 const divsToShowIfCarUsed = document.querySelectorAll('.d-none-new');
+const result = document.getElementById('result');
+const resultPrice =  document.getElementById('resultPrice');
+const closeBtn = document.getElementById('closeBtn');
 
+// Меняем выбор марок в зависимости от бренда
 carBrand.addEventListener('change', () => {
     const brand = carBrand.value;
     switch(brand){
@@ -23,6 +28,8 @@ carBrand.addEventListener('change', () => {
         }
 });
 
+// Если машина бу, показываем поля с количеством владельцев и сроком эксплуатации.
+// Если машина новая, прячем эти поля
 vehicleCondition.forEach((condition) => { condition.addEventListener('change', ()=>{
 
     console.log(condition.value);
@@ -38,6 +45,7 @@ vehicleCondition.forEach((condition) => { condition.addEventListener('change', (
     }
 })})
 
+// Набор чистых функций для рассчетов окончательной цены
 function countMarkPrice ({ carBrand, carModel}) {
     if (carBrand === 'Opel') {
         switch(carModel){
@@ -186,16 +194,49 @@ function getUsersCount ({usersNumbers}) {
 
 }
 
-//function countPriceMindingUsersCount ();
+function countPriceMindingUsersCount (price, { carAge, usersNumbers }) {
+    console.log(carAge);
+    console.log(usersNumbers);
+    console.log(price);
+
+    let priceWithUsageFactor = price;
+
+    if (carAge === '0-3') {
+        priceWithUsageFactor = priceWithUsageFactor*0.98;
+    }
+    else if (carAge === '3-5') {
+        priceWithUsageFactor = priceWithUsageFactor*0.92;
+    }
+    else if (carAge === '5-7') {
+        priceWithUsageFactor = priceWithUsageFactor*0.89;
+    }
+    else if (carAge === '7+') {
+        priceWithUsageFactor = priceWithUsageFactor*0.8;
+    }
+
+    if (usersNumbers === 'one') {
+        return priceWithUsageFactor = priceWithUsageFactor*0.98;
+    }
+    else if (usersNumbers === 'several') {
+        return priceWithUsageFactor = priceWithUsageFactor*0.92;
+    }
+    else if (usersNumbers === '4more') {
+        return priceWithUsageFactor = priceWithUsageFactor*0.89;
+    }
+};
 
 function countPriceMindingAge (isNew, answersObj, priceWithHorsepowerIndex) {
     if(isNew(answersObj)) {
         return priceWithHorsepowerIndex*2;
     }
 
-
+    else {
+        return Math.round(countPriceMindingUsersCount(priceWithHorsepowerIndex, answersObj));
+    }
 }
 
+// Тут происходит самое важное - собираются подсчёты и выводится результат.
+// Чтобы в будущем было легче фиксить и добавлять новые факторы, подсчёты выведены в переменные.
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -215,10 +256,14 @@ form.addEventListener('submit', (e) => {
     const horsepowerIndex = countHorsepowerIndex(answersObj);
     const priceWithHorsepowerIndex = countPriceWithHorsepowerIndex(priceWithEngineCapacityIndex, horsepowerIndex); 
 
-    //const priceMindingAge =
+    const priceMindingAge = countPriceMindingAge(isNew, answersObj, priceWithHorsepowerIndex);
 
+    resultPrice.innerHTML = `<bold>${priceMindingAge} рублей</bold>`;
+    result.style.visibility = 'visible';
+});
 
-    console.log(MarkPrice, auctionPrice, overMarketAndAuctionPrice, oilIndex, priceWithOilIndex, priceWithEngineCapacityIndex, priceWithHorsepowerIndex);
-
-    
+// Зактываем результат, чтобы можно было поменять данные в форме или просчитать другую машину
+closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    result.style.visibility = 'hidden';
 });
